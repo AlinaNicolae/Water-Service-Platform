@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="130dp"
         android:layout_marginBottom="185dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/fab"
@@ -41,7 +41,7 @@
     <com.esri.arcgisruntime.mapping.view.MapView
         android:id="@+id/mapView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="163dp"
         android:layout_marginBottom="34dp"
         android:baselineAligned="false"
         app:layout_constraintBottom_toTopOf="@+id/submit"
@@ -73,6 +73,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
