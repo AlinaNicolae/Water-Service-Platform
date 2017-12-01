@@ -22,6 +22,7 @@
         android:layout_height="200dp"
         android:layout_marginBottom="156dp"
         android:layout_weight="1"
+        android:elevation="5dp"
         android:background="@drawable/mybutton"
         android:text="Camera"
         android:textAllCaps="false"

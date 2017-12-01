@@ -69,7 +69,7 @@ public class Form extends AppCompatActivity {
         // inflate MapView from layout
         mMapView = (MapView) findViewById(R.id.mapView);
         // create a map with the BasemapType topographic
-        ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, 34.056295, -117.195800, 16);
+        ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, 60.184140, 24.830084, 16);
         // set the map to be displayed in this view
         mMapView.setMap(map);
 
