@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,10 +32,18 @@ public class Main extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Main.this, CardView.class);
+                EditText txt = (EditText) findViewById(R.id.kenyanID);
+                String kenyanID = txt.getText().toString();
+                TextInputLayout til = (TextInputLayout) findViewById(R.id.textInputLayout3);
+                if (kenyanID == null || kenyanID.isEmpty() || !kenyanID.matches("[a-zA-Z0-9]*")) {
+                    til.setError("You need to enter your id");
+                } else {
+                    til.setError(null);
+                    Intent i = new Intent(Main.this, CardView.class);
 //                EditText editText = (EditText) findViewById(R.id.kenyanID);
 //                i.putExtra("kenyanID", editText.getText().toString());
-                startActivity(i);
+                    startActivity(i);
+                }
             }
         });
 
@@ -51,9 +60,16 @@ public class Main extends AppCompatActivity {
                         case KeyEvent.KEYCODE_ENTER:
                             Intent i = new Intent(Main.this, CardView.class);
                             EditText editText = (EditText) findViewById(R.id.kenyanID);
-                            i.putExtra("kenyanID", editText.getText().toString());
-                            startActivity(i);
-                            return true;
+                            String kenyanID = editText.getText().toString();
+                            TextInputLayout til = (TextInputLayout) findViewById(R.id.textInputLayout3);
+                            if (kenyanID == null || kenyanID.isEmpty() || !kenyanID.matches("[a-zA-Z0-9]*")) {
+                                til.setError("You need to enter your id");
+                            } else {
+                                til.setError(null);
+                                i.putExtra("kenyanID", kenyanID);
+                                startActivity(i);
+                                return true;
+                            }
                         default:
                             break;
                     }

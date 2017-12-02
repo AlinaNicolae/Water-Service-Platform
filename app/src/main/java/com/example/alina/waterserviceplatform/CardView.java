@@ -55,5 +55,14 @@ public class CardView extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        FloatingActionButton back = (FloatingActionButton) findViewById(R.id.fab2);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CardView.this, Main.class);
+                startActivity(i);
+            }
+        });
     }
 }
