@@ -29,15 +29,23 @@ public class Form extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
+        boolean flag = false;
 
         try {
             File file;
             String path = Environment.getExternalStorageDirectory().toString();
-            file = new File(path, "leakage.png");
+            file = new File(path, "leakage2.png");
+            if (!file.exists()) {
+                file = new File(path, "leakage.png");
+                flag = true;
+            }
             MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
 
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            if (flag == false) {
+                Bitmap bitmap = BitmapFactory.decodeFile(path + "/leakage2.png");
+            }
             Bitmap bitmap = BitmapFactory.decodeFile(path + "/leakage.png");
             ImageView image = (ImageView) findViewById(R.id.imageView);
             image.setImageBitmap(bitmap);

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout android:id="@+id/parent" xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.alina.waterserviceplatform.Main"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="81dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
-        android:gravity="center"
+        android:gravity="left"
         android:inputType="textMultiLine"
-        android:text="Welcome to Kenya Water Service Platform.\nThank you for helping detect leakages.\nEnter your social ID to start."
+        android:text="Enter your Kenyan ID to start"
         android:textColor="#000000"
-        android:textSize="26dp"
+        android:textSize="32dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,8 +50,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@android:color/holo_blue_dark"
-            android:textColor="@color/colorPrimary"
-            android:hint="Social Kenyan ID"
+            android:textColor="#D3D3D3"
+            android:hint="Ex. 12345678"
             android:textColorHighlight="@color/colorPrimary"
             app:backgroundTint="@color/colorPrimary"/>
     </android.support.design.widget.TextInputLayout>
