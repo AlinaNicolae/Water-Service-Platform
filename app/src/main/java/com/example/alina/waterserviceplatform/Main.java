@@ -39,7 +39,7 @@ public class Main extends AppCompatActivity {
                     til.setError("You need to enter your id");
                 } else {
                     til.setError(null);
-                    Intent i = new Intent(Main.this, CardView.class);
+                    Intent i = new Intent(Main.this, DrawerActivity.class);
 //                EditText editText = (EditText) findViewById(R.id.kenyanID);
 //                i.putExtra("kenyanID", editText.getText().toString());
                     startActivity(i);
@@ -58,7 +58,7 @@ public class Main extends AppCompatActivity {
                     {
                         case KeyEvent.KEYCODE_DPAD_CENTER:
                         case KeyEvent.KEYCODE_ENTER:
-                            Intent i = new Intent(Main.this, CardView.class);
+                            Intent i = new Intent(Main.this, DrawerActivity.class);
                             EditText editText = (EditText) findViewById(R.id.kenyanID);
                             String kenyanID = editText.getText().toString();
                             TextInputLayout til = (TextInputLayout) findViewById(R.id.textInputLayout3);

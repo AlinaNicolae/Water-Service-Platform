@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Water-Service-Platform.iml" filepath="$PROJECT_DIR$/Water-Service-Platform.iml" />
-      <module fileurl="file://D:\Aalto\Period-II\UserInterfaceConstruction\WS\Water-Service-Platform\WaterServicePlatform.iml" filepath="D:\Aalto\Period-II\UserInterfaceConstruction\WS\Water-Service-Platform\WaterServicePlatform.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
