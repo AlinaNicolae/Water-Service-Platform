@@ -32,24 +32,24 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button next = (Button) findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText txt = (EditText) findViewById(R.id.kenyanID);
-                String kenyanID = txt.getText().toString();
-                TextInputLayout til = (TextInputLayout) findViewById(R.id.textInputLayout3);
-                if (kenyanID == null || kenyanID.isEmpty() || !kenyanID.matches("[0-9]*") || kenyanID.length() != 8) {
-                    til.setError("You need to enter your id like 12345678");
-                } else {
-                    til.setError(null);
-                    Intent i = new Intent(Main.this, DrawerActivity.class);
-//                EditText editText = (EditText) findViewById(R.id.kenyanID);
-//                i.putExtra("kenyanID", editText.getText().toString());
-                    startActivity(i);
-                }
-            }
-        });
+//        Button next = (Button) findViewById(R.id.next);
+//        next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                EditText txt = (EditText) findViewById(R.id.kenyanID);
+//                String kenyanID = txt.getText().toString();
+//                TextInputLayout til = (TextInputLayout) findViewById(R.id.textInputLayout3);
+//                if (kenyanID == null || kenyanID.isEmpty() || !kenyanID.matches("[0-9]*") || kenyanID.length() != 8) {
+//                    til.setError("You need to enter your id like 12345678");
+//                } else {
+//                    til.setError(null);
+//                    Intent i = new Intent(Main.this, DrawerActivity.class);
+////                EditText editText = (EditText) findViewById(R.id.kenyanID);
+////                i.putExtra("kenyanID", editText.getText().toString());
+//                    startActivity(i);
+//                }
+//            }
+//        });
 
         EditText txt = (EditText) findViewById(R.id.kenyanID);
         txt.setOnKeyListener(new View.OnKeyListener()
