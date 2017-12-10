@@ -7,11 +7,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.view.LocationDisplay;
 import com.esri.arcgisruntime.mapping.view.MapView;
+
+import java.util.Map;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -35,6 +39,32 @@ public class MapActivity extends AppCompatActivity {
         // get the MapView's LocationDisplay
         mLocationDisplay = mMapView.getLocationDisplay();
 
+        LinearLayout locationLayout= findViewById(R.id.location);
+        locationLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MapActivity.this, Form.class);
+                startActivity(i);
+            }
+        });
+        TextView locationTextOne= findViewById(R.id.editText);
+        locationTextOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MapActivity.this, Form.class);
+                startActivity(i);
+            }
+        });
+        TextView locationTextTwo= findViewById(R.id.info);
+        locationTextTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MapActivity.this, Form.class);
+                startActivity(i);
+            }
+        });
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +78,11 @@ public class MapActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void onClickLocation(){
+
+
+    };
 
       @Override
       protected void onPause(){
