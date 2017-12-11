@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.alina.waterserviceplatform">
+    package="com.example.alina.waterserviceplatform"
+    android:installLocation="preferExternal">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -35,7 +36,15 @@
         <activity android:name=".Login" />
         <activity android:name=".SuccessfulSubmission" />
         <activity android:name=".CameraView" />
-        <activity android:name=".CardView"></activity>
+        <activity android:name=".CardView" />
+        <activity
+            android:name=".DrawerActivity"
+            android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_activity_map"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

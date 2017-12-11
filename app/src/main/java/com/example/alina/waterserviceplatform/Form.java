@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
@@ -67,47 +68,52 @@ public class Form extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Form.this, SuccessfulSubmission.class);
-//                EditText editText = (EditText) findViewById(R.id.kenyanID);
-//                i.putExtra("kenyanID", editText.getText().toString());
+//                Intent i = new Intent(Form.this, SuccessfulSubmission.class);
+////                EditText editText = (EditText) findViewById(R.id.kenyanID);
+////                i.putExtra("kenyanID", editText.getText().toString());
+//                startActivity(i);
+                Toast.makeText(Form.this, "Your report was send successfully!",
+                        Toast.LENGTH_LONG*2).show();
+                Intent i = new Intent(Form.this, DrawerActivity.class);
                 startActivity(i);
             }
         });
 
         // inflate MapView from layout
-        mMapView = (MapView) findViewById(R.id.mapView);
+        //mMapView = (MapView) findViewById(R.id.mapView);
         // create a map with the BasemapType topographic
-        ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, 60.184140, 24.830084, 16);
+        //ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, 60.184140, 24.830084, 16);
         // set the map to be displayed in this view
-        mMapView.setMap(map);
+        //mMapView.setMap(map);
 
         // get the MapView's LocationDisplay
-        mLocationDisplay = mMapView.getLocationDisplay();
+       //mLocationDisplay = mMapView.getLocationDisplay();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(Form.this,MapActivity.class);
                 //Intent i = new Intent(SecondActivity.this,MainActivity.class);
-                //startActivity(i);
-                mLocationDisplay.setAutoPanMode(LocationDisplay.AutoPanMode.RECENTER);
-                if (!mLocationDisplay.isStarted())
-                    mLocationDisplay.startAsync();
+                startActivity(i);
+               // mLocationDisplay.setAutoPanMode(LocationDisplay.AutoPanMode.RECENTER);
+               // if (!mLocationDisplay.isStarted())
+                //    mLocationDisplay.startAsync();
             }
         });
 
     }
 
-    @Override
-    protected void onPause(){
-        mMapView.pause();
-        super.onPause();
-    }
+  //  @Override
+  //  protected void onPause(){
+        //mMapView.pause();
+       // super.onPause();
+  //  }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        mMapView.resume();
-    }
+  //  @Override
+   // protected void onResume(){
+   //     super.onResume();
+       // mMapView.resume();
+   // }
 
 }

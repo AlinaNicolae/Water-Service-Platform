@@ -47,22 +47,22 @@ public class CardView extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        FloatingActionButton submit = (FloatingActionButton) findViewById(R.id.fab);
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(CardView.this, CameraView.class);
-                startActivity(i);
-            }
-        });
+//        FloatingActionButton submit = (FloatingActionButton) findViewById(R.id.fab);
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(CardView.this, CameraView.class);
+//                startActivity(i);
+//            }
+//        });
 
-        FloatingActionButton back = (FloatingActionButton) findViewById(R.id.fab2);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(CardView.this, Main.class);
-                startActivity(i);
-            }
-        });
+//        FloatingActionButton back = (FloatingActionButton) findViewById(R.id.fab2);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(CardView.this, Main.class);
+//                startActivity(i);
+//            }
+//        });
     }
 }
