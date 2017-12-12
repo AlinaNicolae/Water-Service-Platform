@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
@@ -29,6 +30,7 @@ public class Main extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
