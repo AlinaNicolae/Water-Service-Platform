@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,21 +17,28 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.*;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -44,6 +53,8 @@ public class DrawerActivity extends AppCompatActivity
 
     String mCurrentPhotoPath;
     static final int REQUEST_TAKE_PHOTO = 1;
+
+    int resume_var = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,25 +78,7 @@ public class DrawerActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                // Ensure that there's a camera activity to handle the intent
-//                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//                    // Create the File where the photo should go
-//                    File photoFile = null;
-//                    try {
-//                        photoFile = createImageFile();
-//                    } catch (IOException ex) {
-//                        // Error occurred while creating the File
-//                        ex.printStackTrace();
-//                    }
-//                    // Continue only if the File was successfully created
-//                    if (photoFile != null) {
-//                        Uri photoURI = FileProvider.getUriForFile(DrawerActivity.this,
-//                                "com.example.android.fileprovider",
-//                                photoFile);
-//                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                       startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-//                    }
-//                }
+                startActivityForResult(takePictureIntent, 0);
             }
         });
 
@@ -103,12 +96,29 @@ public class DrawerActivity extends AppCompatActivity
         images[1] = (ImageView) findViewById(R.id.cardView2);
         int cnt = 0;
 
-        try {
-            String path = Environment.getExternalStorageDirectory().toString();
-            File[] directoryListing = Environment.getExternalStorageDirectory().listFiles();
-            for (File file : directoryListing) {
-                if (file.isFile()) {
+        String path = Environment.getExternalStorageDirectory().toString();
+        File[] directoryListing = Environment.getExternalStorageDirectory().listFiles();
+        for (File file : directoryListing) {
+            if (file.isFile()) {
+                try {
                     MediaStore.Images.Media.insertImage(getContentResolver(), file.getAbsolutePath(), file.getName(), file.getName());
+
+                    if (file.getName().equals("leakage2.png")) {
+                        CardView cd2 = (CardView) findViewById(R.id.cd2);
+                        cd2.setVisibility(View.VISIBLE);
+                        cd2.setCardBackgroundColor(Color.parseColor("#32CD32"));
+                        TextView cd1_txt1 = (TextView) findViewById(R.id.cd1_txt1);
+                        TextView cd1_txt2 = (TextView) findViewById(R.id.cd1_txt2);
+                        cd1_txt1.setText("In progress");
+                        cd1_txt2.setText("Today: We will attend to your problem as soon as possible");
+
+                        CardView cd1 = (CardView) findViewById(R.id.cd1);
+                        cd1.setCardBackgroundColor(Color.parseColor("#FFFF00"));
+                        TextView cd2_txt1 = (TextView) findViewById(R.id.cd2_txt1);
+                        TextView cd2_txt2 = (TextView) findViewById(R.id.cd2_txt2);
+                        cd2_txt1.setText("Solved");
+                        cd2_txt2.setText("12/10/2017 Severe leakage damage in Nairobi");
+                    }
 
                     BitmapFactory.Options options = new BitmapFactory.Options();
                     options.inPreferredConfig = Bitmap.Config.ARGB_8888;
@@ -117,17 +127,17 @@ public class DrawerActivity extends AppCompatActivity
                     image.setImageBitmap(bitmap);
                     image.setScaleType(ImageView.ScaleType.FIT_XY);
                     cnt += 1;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //The bitmap Image is stored in the variable bitmap
         Bitmap bitmap = (Bitmap)data.getExtras().get("data");
 
         // save photo to file
@@ -140,7 +150,7 @@ public class DrawerActivity extends AppCompatActivity
                 file = new File(path, "leakage2.png");
             }
             out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 300, out);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -153,8 +163,8 @@ public class DrawerActivity extends AppCompatActivity
             }
         }
 
-       Intent i = new Intent(DrawerActivity.this, Form.class);
-       startActivity(i);
+        Intent i = new Intent(DrawerActivity.this, Form.class);
+        startActivity(i);
     }
 
     private File createImageFile() throws IOException {
@@ -252,5 +262,17 @@ public class DrawerActivity extends AppCompatActivity
                     .LENGTH_SHORT).show();
 
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        String path = Environment.getExternalStorageDirectory().toString();
+        File file = new File(path + "/leakage");
+        file.delete();
+
+        file = new File(path + "/leakage2");
+        file.delete();
     }
 }

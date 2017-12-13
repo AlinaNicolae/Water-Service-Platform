@@ -20,8 +20,8 @@ public class Greeting extends AppCompatActivity {
             @Override
             public void onFinish(){
                 //set the new Content of your activity
-               // Greeting.this.setContentView(R.layout.activity_main);
-                Intent i = new Intent(Greeting.this,Main.class);
+//                Greeting.this.setContentView(R.layout.activity_main);
+                Intent i = new Intent(Greeting.this, Main.class);
                 startActivity(i);
             }
         }.start();

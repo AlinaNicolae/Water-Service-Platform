@@ -8,8 +8,10 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,6 +34,10 @@ public class Form extends AppCompatActivity {
         setContentView(R.layout.activity_form);
         boolean flag = false;
 
+//        View view = LayoutInflater.from(getApplication()).inflate(R.layout.activity_card_view, null);
+//        FrameLayout cd2 = (FrameLayout) view.findViewById(R.id.cd2);
+//        cd2.setVisibility(View.VISIBLE);
+
         try {
             File file;
             String path = Environment.getExternalStorageDirectory().toString();
@@ -44,10 +50,10 @@ public class Form extends AppCompatActivity {
 
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            if (flag == false) {
-                Bitmap bitmap = BitmapFactory.decodeFile(path + "/leakage2.png");
-            }
             Bitmap bitmap = BitmapFactory.decodeFile(path + "/leakage.png");
+            if (flag == false) {
+                bitmap = BitmapFactory.decodeFile(path + "/leakage2.png");
+            }
             ImageView image = (ImageView) findViewById(R.id.imageView);
             image.setImageBitmap(bitmap);
             image.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -72,7 +78,7 @@ public class Form extends AppCompatActivity {
 ////                EditText editText = (EditText) findViewById(R.id.kenyanID);
 ////                i.putExtra("kenyanID", editText.getText().toString());
 //                startActivity(i);
-                Toast.makeText(Form.this, "Your report was send successfully!",
+                Toast.makeText(Form.this, "Your report was sent successfully!",
                         Toast.LENGTH_LONG*2).show();
                 Intent i = new Intent(Form.this, DrawerActivity.class);
                 startActivity(i);

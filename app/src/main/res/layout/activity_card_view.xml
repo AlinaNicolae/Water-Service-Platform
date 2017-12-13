@@ -27,10 +27,12 @@
             tools:context="com.example.alina.waterserviceplatform.CardView">
 
             <android.support.v7.widget.CardView
+                android:id="@+id/cd1"
                 android:layout_width="344dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:translationZ="4dp"
+                app:cardBackgroundColor="#32CD32"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="8dp">
 
@@ -47,24 +49,29 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/cd1_txt1"
                         android:textSize="18dp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"
-                        android:text="31/08/2017" />
+                        android:text="Solved" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/cd1_txt2"
                         android:textSize="14dp"
                         android:textColor="#000"
-                        android:text="Reported by Somenone: The pipe line is damaged ..." />
+                        android:text="12/10/2017 Severe leakage damage in Nairobi" />
                 </TableLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
+                android:id="@+id/cd2"
                 android:layout_width="344dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:translationZ="4dp"
+                android:visibility="invisible"
+                app:cardBackgroundColor="#FFFF00"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="8dp">
 
@@ -82,16 +89,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/cd2_txt1"
                         android:textSize="18dp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"
-                        android:text="25/11/2017" />
+                        android:text="In progress" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/cd2_txt2"
                         android:textSize="14dp"
                         android:textColor="#000"
-                        android:text="Reported by Somenone: The pipe line is damaged ..." />
+                        android:text="Today: We will attend to your problem as soon as possible" />
                 </TableLayout>
             </android.support.v7.widget.CardView>
 
