@@ -107,26 +107,38 @@ public class DrawerActivity extends AppCompatActivity
                         CardView cd2 = (CardView) findViewById(R.id.cd2);
                         cd2.setVisibility(View.VISIBLE);
                         cd2.setCardBackgroundColor(Color.parseColor("#32CD32"));
+                        TextView cd2_txt1 = (TextView) findViewById(R.id.cd2_txt1);
+                        TextView cd2_txt2 = (TextView) findViewById(R.id.cd2_txt2);
+                        cd2_txt1.setText("Solved");
+                        cd2_txt2.setText("12/10/2017: Severe leakage damage in Nairobi");
+
+                        CardView cd1 = (CardView) findViewById(R.id.cd1);
+                        cd1.setCardBackgroundColor(Color.parseColor("#FFFF00"));
                         TextView cd1_txt1 = (TextView) findViewById(R.id.cd1_txt1);
                         TextView cd1_txt2 = (TextView) findViewById(R.id.cd1_txt2);
                         cd1_txt1.setText("In progress");
                         cd1_txt2.setText("Today: We will attend to your problem as soon as possible");
 
-                        CardView cd1 = (CardView) findViewById(R.id.cd1);
-                        cd1.setCardBackgroundColor(Color.parseColor("#FFFF00"));
-                        TextView cd2_txt1 = (TextView) findViewById(R.id.cd2_txt1);
-                        TextView cd2_txt2 = (TextView) findViewById(R.id.cd2_txt2);
-                        cd2_txt1.setText("Solved");
-                        cd2_txt2.setText("12/10/2017 Severe leakage damage in Nairobi");
-                    }
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                        Bitmap bitmap = BitmapFactory.decodeFile(path + "/leakage.png");
+                        ImageView image = images[1];
+                        image.setImageBitmap(bitmap);
+                        image.setScaleType(ImageView.ScaleType.FIT_XY);
 
-                    BitmapFactory.Options options = new BitmapFactory.Options();
-                    options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-                    Bitmap bitmap = BitmapFactory.decodeFile(path + "/" + file.getName());
-                    ImageView image = images[cnt];
-                    image.setImageBitmap(bitmap);
-                    image.setScaleType(ImageView.ScaleType.FIT_XY);
-                    cnt += 1;
+                        bitmap = BitmapFactory.decodeFile(path + "/leakage2.png");
+                        image = images[0];
+                        image.setImageBitmap(bitmap);
+                        image.setScaleType(ImageView.ScaleType.FIT_XY);
+                    } else {
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                        Bitmap bitmap = BitmapFactory.decodeFile(path + "/" + file.getName());
+                        ImageView image = images[cnt];
+                        image.setImageBitmap(bitmap);
+                        image.setScaleType(ImageView.ScaleType.FIT_XY);
+                        cnt += 1;
+                    }
 
                 } catch (Exception e) {
                     e.printStackTrace();

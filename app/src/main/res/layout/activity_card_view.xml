@@ -60,7 +60,7 @@
                         android:id="@+id/cd1_txt2"
                         android:textSize="14dp"
                         android:textColor="#000"
-                        android:text="12/10/2017 Severe leakage damage in Nairobi" />
+                        android:text="12/10/2017: Severe leakage damage in Nairobi" />
                 </TableLayout>
             </android.support.v7.widget.CardView>
 
