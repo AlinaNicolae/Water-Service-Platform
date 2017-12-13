@@ -89,9 +89,6 @@ public class MapActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(Form.this,MapActivity.class);
-                //Intent i = new Intent(SecondActivity.this,MainActivity.class);
-//                startActivity(i);
                  mLocationDisplay.setAutoPanMode(LocationDisplay.AutoPanMode.RECENTER);
                  if (!mLocationDisplay.isStarted())
                     mLocationDisplay.startAsync();
@@ -99,35 +96,23 @@ public class MapActivity extends AppCompatActivity {
         });
     }
 
-    private void onClickLocation(){
+    @Override
+    protected void onPause(){
+        mMapView.pause();
+        super.onPause();
+    }
 
-
-    };
-
-      @Override
-      protected void onPause(){
-    mMapView.pause();
-     super.onPause();
-      }
-
-      @Override
-     protected void onResume(){
-         super.onResume();
-     mMapView.resume();
-     }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        mMapView.resume();
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        // If request is cancelled, the result arrays are empty.
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            // Location permission was granted. This would have been triggered in response to failing to start the
-            // LocationDisplay, so try starting this again.
             mLocationDisplay.startAsync();
-            //captureScreenshotAsync();
         } else {
-            // If permission was denied, show toast to inform user what was chosen. If LocationDisplay is started again,
-            // request permission UX will be shown again, option should be shown to allow never showing the UX again.
-            // Alternative would be to disable functionality so request is not shown again.
             Toast.makeText(MapActivity.this, "Location permission denied", Toast
                     .LENGTH_SHORT).show();
 

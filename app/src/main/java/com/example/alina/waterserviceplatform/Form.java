@@ -36,10 +36,6 @@ public class Form extends AppCompatActivity {
         setContentView(R.layout.activity_form);
         boolean flag = false;
 
-//        View view = LayoutInflater.from(getApplication()).inflate(R.layout.activity_card_view, null);
-//        FrameLayout cd2 = (FrameLayout) view.findViewById(R.id.cd2);
-//        cd2.setVisibility(View.VISIBLE);
-
         try {
             File file;
             String path = Environment.getExternalStorageDirectory().toString();
@@ -76,10 +72,6 @@ public class Form extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(Form.this, SuccessfulSubmission.class);
-////                EditText editText = (EditText) findViewById(R.id.kenyanID);
-////                i.putExtra("kenyanID", editText.getText().toString());
-//                startActivity(i);
                 Toast.makeText(Form.this, "Your report was sent successfully!",
                         Toast.LENGTH_LONG*2).show();
                 Intent i = new Intent(Form.this, DrawerActivity.class);
@@ -87,26 +79,12 @@ public class Form extends AppCompatActivity {
             }
         });
 
-        // inflate MapView from layout
-        //mMapView = (MapView) findViewById(R.id.mapView);
-        // create a map with the BasemapType topographic
-        //ArcGISMap map = new ArcGISMap(Basemap.Type.TOPOGRAPHIC, 60.184140, 24.830084, 16);
-        // set the map to be displayed in this view
-        //mMapView.setMap(map);
-
-        // get the MapView's LocationDisplay
-       //mLocationDisplay = mMapView.getLocationDisplay();
-
         ImageView fab = (ImageView) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Form.this,MapActivity.class);
-                //Intent i = new Intent(SecondActivity.this,MainActivity.class);
                 startActivity(i);
-               // mLocationDisplay.setAutoPanMode(LocationDisplay.AutoPanMode.RECENTER);
-               // if (!mLocationDisplay.isStarted())
-                //    mLocationDisplay.startAsync();
             }
         });
 
@@ -143,17 +121,5 @@ public class Form extends AppCompatActivity {
         Intent i = new Intent(Form.this, Form.class);
         startActivity(i);
     }
-
-  //  @Override
-  //  protected void onPause(){
-        //mMapView.pause();
-       // super.onPause();
-  //  }
-
-  //  @Override
-   // protected void onResume(){
-   //     super.onResume();
-       // mMapView.resume();
-   // }
 
 }
