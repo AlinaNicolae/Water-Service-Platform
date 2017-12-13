@@ -19,8 +19,8 @@
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="384dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="292dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="384dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -35,19 +35,33 @@
     </android.support.design.widget.TextInputLayout>
 
 
-    <android.support.design.widget.FloatingActionButton
+    <ImageView
         android:id="@+id/fab"
-        android:layout_width="77dp"
+        android:layout_width="166dp"
         android:layout_height="30dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="367dp"
+        android:layout_marginTop="346dp"
+        android:elevation="5dp"
+        android:paddingRight="105dp"
         android:scaleType="center"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_person_pin_circle_black_24dp" />
+        app:srcCompat="@mipmap/pin" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="139dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="352dp"
+        android:text="Otaniemi, Finland"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/submit"
@@ -63,16 +77,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="139dp"
-        android:layout_height="24dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="372dp"
-        android:text="Otaniemi, Finland"
-        app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -89,7 +89,7 @@ public class Form extends AppCompatActivity {
         // get the MapView's LocationDisplay
        //mLocationDisplay = mMapView.getLocationDisplay();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        ImageView fab = (ImageView) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

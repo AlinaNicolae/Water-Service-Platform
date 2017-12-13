@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -12,6 +14,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,11 +24,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,7 +42,8 @@ public class DrawerActivity extends AppCompatActivity
             new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE };
     int requestCode = 2;
 
-
+    String mCurrentPhotoPath;
+    static final int REQUEST_TAKE_PHOTO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +66,26 @@ public class DrawerActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-                }
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                // Ensure that there's a camera activity to handle the intent
+//                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//                    // Create the File where the photo should go
+//                    File photoFile = null;
+//                    try {
+//                        photoFile = createImageFile();
+//                    } catch (IOException ex) {
+//                        // Error occurred while creating the File
+//                        ex.printStackTrace();
+//                    }
+//                    // Continue only if the File was successfully created
+//                    if (photoFile != null) {
+//                        Uri photoURI = FileProvider.getUriForFile(DrawerActivity.this,
+//                                "com.example.android.fileprovider",
+//                                photoFile);
+//                        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                       startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+//                    }
+//                }
             }
         });
 
@@ -74,10 +97,37 @@ public class DrawerActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ImageView[] images = new ImageView[6];
+        images[0] = (ImageView) findViewById(R.id.cardView1);
+        images[1] = (ImageView) findViewById(R.id.cardView2);
+        int cnt = 0;
+
+        try {
+            String path = Environment.getExternalStorageDirectory().toString();
+            File[] directoryListing = Environment.getExternalStorageDirectory().listFiles();
+            for (File file : directoryListing) {
+                if (file.isFile()) {
+                    MediaStore.Images.Media.insertImage(getContentResolver(), file.getAbsolutePath(), file.getName(), file.getName());
+
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                    Bitmap bitmap = BitmapFactory.decodeFile(path + "/" + file.getName());
+                    ImageView image = images[cnt];
+                    image.setImageBitmap(bitmap);
+                    image.setScaleType(ImageView.ScaleType.FIT_XY);
+                    cnt += 1;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //The bitmap Image is stored in the variable bitmap
         Bitmap bitmap = (Bitmap)data.getExtras().get("data");
 
         // save photo to file
@@ -90,7 +140,7 @@ public class DrawerActivity extends AppCompatActivity
                 file = new File(path, "leakage2.png");
             }
             out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 300, out);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -103,9 +153,34 @@ public class DrawerActivity extends AppCompatActivity
             }
         }
 
-        Intent i = new Intent(DrawerActivity.this, Form.class);
-        startActivity(i);
+       Intent i = new Intent(DrawerActivity.this, Form.class);
+       startActivity(i);
     }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+    private void galleryAddPic() {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File f = new File(mCurrentPhotoPath);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        this.sendBroadcast(mediaScanIntent);
+    }
+
 
     @Override
     public void onBackPressed() {
