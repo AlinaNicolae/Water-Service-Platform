@@ -28,11 +28,12 @@
 
             <android.support.v7.widget.CardView
                 android:id="@+id/cd1"
+                android:visibility="invisible"
                 android:layout_width="344dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:translationZ="4dp"
-                app:cardBackgroundColor="#32CD32"
+                app:cardBackgroundColor="#FFFF00"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="8dp">
 
@@ -52,14 +53,14 @@
                         android:textSize="18dp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimaryDark"
-                        android:text="Solved" />
+                        android:text="In progress" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/cd1_txt2"
                         android:textSize="14dp"
                         android:textColor="#000"
-                        android:text="12/10/2017: Severe leakage damage in Nairobi" />
+                        android:text="Today: We will attend to your problem as soon as possible" />
                 </TableLayout>
             </android.support.v7.widget.CardView>
 

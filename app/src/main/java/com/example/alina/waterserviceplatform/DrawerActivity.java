@@ -103,6 +103,11 @@ public class DrawerActivity extends AppCompatActivity
                 try {
                     MediaStore.Images.Media.insertImage(getContentResolver(), file.getAbsolutePath(), file.getName(), file.getName());
 
+                    if (file.getName().equals("leakage.png")) {
+                        CardView cd1 = (CardView) findViewById(R.id.cd1);
+                        cd1.setVisibility(View.VISIBLE);
+                    }
+
                     if (file.getName().equals("leakage2.png")) {
                         CardView cd2 = (CardView) findViewById(R.id.cd2);
                         cd2.setVisibility(View.VISIBLE);

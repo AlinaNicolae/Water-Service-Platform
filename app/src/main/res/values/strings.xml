@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">LookOut</string>
-<<<<<<< HEAD
     <string name="title_activity_drawer">DrawerActivity</string>
-=======
->>>>>>> a2a3ae13f6f3e043a79ee46ca1d919386894e784
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
