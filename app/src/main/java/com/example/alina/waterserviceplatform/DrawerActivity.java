@@ -106,14 +106,14 @@ public class DrawerActivity extends AppCompatActivity
                     if (file.getName().equals("leakage2.png")) {
                         CardView cd2 = (CardView) findViewById(R.id.cd2);
                         cd2.setVisibility(View.VISIBLE);
-                        cd2.setCardBackgroundColor(Color.parseColor("#32CD32"));
+                        cd2.setCardBackgroundColor(Color.parseColor("#8bc34a"));
                         TextView cd1_txt1 = (TextView) findViewById(R.id.cd1_txt1);
                         TextView cd1_txt2 = (TextView) findViewById(R.id.cd1_txt2);
                         cd1_txt1.setText("In progress");
                         cd1_txt2.setText("Today: We will attend to your problem as soon as possible");
 
                         CardView cd1 = (CardView) findViewById(R.id.cd1);
-                        cd1.setCardBackgroundColor(Color.parseColor("#FFFF00"));
+                        cd1.setCardBackgroundColor(Color.parseColor("#ff8f00"));
                         TextView cd2_txt1 = (TextView) findViewById(R.id.cd2_txt1);
                         TextView cd2_txt2 = (TextView) findViewById(R.id.cd2_txt2);
                         cd2_txt1.setText("Solved");
