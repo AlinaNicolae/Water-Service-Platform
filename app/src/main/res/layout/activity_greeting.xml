@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash"
+    android:background="@drawable/splash_1"
     tools:context="com.example.alina.waterserviceplatform.Greeting"
     tools:layout_editor_absoluteY="81dp">
 
@@ -16,6 +16,7 @@
         android:text="KWSTF Water service platform"
         android:textColor="#ffffff"
         android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,6 +29,7 @@
         android:text="Report the leakages here"
         android:textColor="#ffffff"
         android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

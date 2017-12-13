@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NewProject.iml" filepath="$PROJECT_DIR$/NewProject.iml" />
+      <module fileurl="file://E:\WaterServicePlatform\NewProject.iml" filepath="E:\WaterServicePlatform\NewProject.iml" />
       <module fileurl="file://E:\WaterServicePlatform\Water-Service-Platform.iml" filepath="E:\WaterServicePlatform\Water-Service-Platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WaterServicePlatform.iml" filepath="$PROJECT_DIR$/WaterServicePlatform.iml" />
       <module fileurl="file://D:\Aalto\Period-II\UserInterfaceConstruction\WS\NewProject\WaterServicePlatform.iml" filepath="D:\Aalto\Period-II\UserInterfaceConstruction\WS\NewProject\WaterServicePlatform.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

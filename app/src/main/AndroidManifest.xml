@@ -28,11 +28,11 @@
         <activity
             android:name=".Main"
             android:theme="@style/splashScreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".Form" />
         <activity android:name=".Signup" />
@@ -42,16 +42,17 @@
         <activity android:name=".CardView" />
         <activity
             android:name=".DrawerActivity"
+            android:label="My leakage reports"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Greeting" android:theme="@style/splashScreenTheme">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <provider
