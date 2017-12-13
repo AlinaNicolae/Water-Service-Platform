@@ -22,6 +22,8 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Form extends AppCompatActivity {
 
@@ -65,8 +67,8 @@ public class Form extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Form.this, CameraView.class);
-                startActivity(i);
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, 0);
             }
         });
 
@@ -108,6 +110,38 @@ public class Form extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bitmap bitmap = (Bitmap)data.getExtras().get("data");
+
+        // save photo to file
+        FileOutputStream out = null;
+        try {
+            File file;
+            String path = Environment.getExternalStorageDirectory().toString();
+            file = new File(path, "leakage.png");
+            if (file.exists()) {
+                file = new File(path, "leakage2.png");
+            }
+            out = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Intent i = new Intent(Form.this, Form.class);
+        startActivity(i);
     }
 
   //  @Override
